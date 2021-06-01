@@ -1,0 +1,16 @@
+{
+  "name": "angeljunior/picpay-php",
+  "description": "PicPay e-Commerce API",
+  "license": "MIT",
+  "type": "library",
+  "homepage": "https://github.com/angeljunior/picpay-php",
+  "require": {
+    "php": ">=7.1",
+    "ext-curl": "*"
+  },
+  "autoload": {
+       "psr-4": {
+           "angeljunior\\": "src"
+       }
+   }
+}
