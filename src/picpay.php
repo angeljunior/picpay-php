@@ -47,8 +47,8 @@ class PicPay {
 		}
 
 
-		self::$xPicPayToken = $x_picpay_token,
-		self::$xSellerToken = $x_seller_token,
+		self::$xPicPayToken = $x_picpay_token;
+		self::$xSellerToken = $x_seller_token;
 
 		if(!is_null($url_callback) && filter_var($url_callback, FILTER_VALIDATE_URL)) {
 			self::$urlReturn = $url_return;
@@ -64,7 +64,7 @@ class PicPay {
 	   
 	   
 	 
- 	public function createPayment($item,$buyer){
+ 	public function createPayment($item, $buyer){
 
 
  		if(empty(self::$urlCallBack) || is_null(self::$urlCallBack))
@@ -90,7 +90,7 @@ class PicPay {
 		$ch = curl_init(self::$APIPayment);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-		 curl_setopt($ch, CURLOPT_HTTPHEADER, ['x-picpay-token: '.self::$xPicPayToken)];
+		 curl_setopt($ch, CURLOPT_HTTPHEADER, ['x-picpay-token: '.self::$xPicPayToken]);
 		 
 		 $res = curl_exec($ch);
 		 curl_close($ch);
