@@ -20,6 +20,7 @@ class PicPay {
 
 
 	public static $APIPayment = 'https://appws.picpay.com/ecommerce/public/payments';
+	public static $APIReference = 'https://appws.picpay.com/ecommerce/public/payments/@referenceId/status';
 	 
 
 	private static $urlCallBack;
@@ -102,44 +103,24 @@ class PicPay {
 	 
 	 
 	 
-	public function notificationPayment(){
+	public function getPayment($referenceID){
 		 
-		$content = trim(file_get_contents("php://input"));
-	    $payBody = json_decode($content);
 		 
-		if(isset($payBody->authorizationId)):
-		   
-		   $referenceId = $payBody->referenceId; 
-		 
-		   $ch = curl_init('https://appws.picpay.com/ecommerce/public/payments/'.$referenceId.'/status');
+		   $ch = curl_init(str_replace('@referenceId', $referenceID, self::$APIReference));
 		   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		   curl_setopt($ch, CURLOPT_HTTPHEADER, array('x-picpay-token: '.self::$xPicPayToken)); 
+		   curl_setopt($ch, CURLOPT_HTTPHEADER, ['x-picpay-token: '.self::$xPicPayToken]); 
 		
-		   $res = curl_exec($ch);
+		   $response = curl_exec($ch);
 		   curl_close($ch);
-		   $notification = json_decode($res); 
-		  		   
-		   $notification->referenceId     = $payBody->referenceId; 
-		   $notification->authorizationId = $payBody->authorizationId;
 		   
-		   return $notification;
-		   
-		 else:
-		  
-			return false;
-		  
-		 endif;
-		  
+		   return json_decode($response, 1); 
 		 
 	}
 	 
 
 	 
 	 
-  }
+}
 
-
-  
-  
   
 ?>
