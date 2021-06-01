@@ -77,8 +77,8 @@ class PicPay {
 	  	$data = [
 	  		'callbackUrl' 	=> self::$urlCallBack,
 	        'returnUrl'   	=> self::$urlReturn,
-	        'referenceId' 	=> $item->referenceID,
-	        'value'       	=> $item->amount,
+	        'referenceId' 	=> (string)$item->referenceID,
+	        'value'       	=> (float)$item->amount,
 	        'purchaseMode' 	=> 'online',
         	'buyer'       	=> [
 				'firstName' 	=> $buyer->name,
@@ -88,15 +88,15 @@ class PicPay {
 		];
 		 
 		$ch = curl_init(self::$APIPayment);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-		 curl_setopt($ch, CURLOPT_HTTPHEADER, ['x-picpay-token: '.self::$xPicPayToken]);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, ['x-picpay-token: '.self::$xPicPayToken]);
 		 
-		 $res = curl_exec($ch);
-		 curl_close($ch);
-	     $return = json_decode($res);
-		 
-		 return $return;
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+	    return json_decode($response, 1);
 		  		  
 	}
 	 
