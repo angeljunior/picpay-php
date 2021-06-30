@@ -1,6 +1,6 @@
 <?php 
 
-namespace angeljunior;
+namespace angeljunior\PicPay;
 
 
 /**

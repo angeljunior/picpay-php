@@ -4,7 +4,6 @@
   "license": "MIT",
   "type": "library",
   "homepage": "https://github.com/angeljunior/picpay-php",
-  "version":"1.0.0",
   "require": {
     "php": ">=7.1",
     "ext-curl": "*"
