@@ -9,8 +9,6 @@
     "ext-curl": "*"
   },
   "autoload": {
-       "psr-4": {
-           "angeljunior\\PicPay\\": "src"
-       }
-   }
+        "classmap": ["src/"]
+  }
 }
