@@ -1,17 +1,6 @@
 <?php 
 
 namespace angeljunior\PicPay
-/**
- * PicPay-PHP V1
- *
- * TERMS OF USE:
- * - This code is in no way affiliated with, authorized, maintained, sponsored
- *   or endorsed by PicPay or any of its affiliates or subsidiaries. This is
- *   an independent and unofficial API. Use at your own risk.
- * - We do NOT support or tolerate anyone who wants to use this API to send spam
- *   or commit other online crimes.
- *
- */
 
 
 class PicPay {
