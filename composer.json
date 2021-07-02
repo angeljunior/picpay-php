@@ -9,6 +9,6 @@
     "ext-curl": "*"
   },
   "autoload": {
-        "classmap": ["src/"]
+    "classmap": ["src/"]
   }
 }

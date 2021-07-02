@@ -1,7 +1,5 @@
 <?php 
 
-namespace angeljunior\PicPay
-
 
 class PicPay {
 
